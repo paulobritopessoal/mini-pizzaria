@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MiniPizzaria.Api/MiniPizzaria.Api.csproj" />
+    <Project Path="src/MiniPizzaria.Application/MiniPizzaria.Application.csproj" />
+    <Project Path="src/MiniPizzaria.Domain/MiniPizzaria.Domain.csproj" />
+    <Project Path="src/MiniPizzaria.Infrastructure/MiniPizzaria.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MiniPizzaria.IntegrationTests/MiniPizzaria.IntegrationTests.csproj" />
+    <Project Path="tests/MiniPizzaria.UnitTests/MiniPizzaria.UnitTests.csproj" />
+  </Folder>
+</Solution>
