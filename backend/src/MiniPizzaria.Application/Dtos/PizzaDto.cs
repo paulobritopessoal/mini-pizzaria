@@ -1,3 +1,2 @@
-namespace MiniPizzaria.Domain;
-
-public record PizzaDto(Guid Id, string Nome, decimal Preco, bool Vegetariana, IReadOnlyList<Ingrediente> Ingredientes);
+namespace MiniPizzaria.Application.Dtos;
+public record PizzaDto(Guid Id, string Nome, decimal Preco, bool Vegetariana, IReadOnlyList<IngredienteDto> Ingredientes);

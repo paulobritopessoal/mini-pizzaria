@@ -1,10 +1,10 @@
 using MiniPizzaria.Domain;
 
-namespace MiniPizzaria.Application;
+namespace MiniPizzaria.Application.Repositorios;
 
 public interface IPizzaRepositorio
 {
-    Task ObterTodasAsync();
-    Task ObterPorIdAsync(Guid id);
+    Task<IReadOnlyList<Pizza>> ObterTodasAsync();
+    Task<Pizza?> ObterPorIdAsync(Guid id);
     Task AdicionarAsync(Pizza pizza);
 }
