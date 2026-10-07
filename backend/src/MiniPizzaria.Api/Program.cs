@@ -1,3 +1,8 @@
+using MiniPizzaria.Application.Repositorios;
+using MiniPizzaria.Application.Servicos;
+using MiniPizzaria.Infrastructure.Repositorios;
+using Scalar.AspNetCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddSingleton<IPizzaRepositorio, PizzaRepositorioEmMemoria>();
+builder.Services.AddScoped<IPizzaService, PizzaService>();
 
 var app = builder.Build();
 
@@ -12,6 +19,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();
