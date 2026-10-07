@@ -21,12 +21,7 @@ public class Pizza
             throw new ArgumentException("A pizza não pode estar sem ingredientes");
     }
     
-    public void AdicionarIngrediente(Ingrediente i) => _ingredientes.Add(i);
-
     public bool EVegetariana => _ingredientes.All(i => i.Vegetariano);
     
-    public string Descricao() => $"Nome: {Nome}, Preço: {Preco:C}"
-           + (EVegetariana ? " (vegetariana)" : "")
-           + " - " + string.Join(", ", _ingredientes.Select(i => i.Nome));
 }
 

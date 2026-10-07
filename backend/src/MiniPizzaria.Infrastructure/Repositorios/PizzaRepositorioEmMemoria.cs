@@ -19,7 +19,7 @@ public class PizzaRepositorioEmMemoria : IPizzaRepositorio
     {
         if(_pizzas.Any(p=>string.Equals(p.Nome, pizza.Nome, StringComparison.OrdinalIgnoreCase)))
         {
-            throw new ArgumentException($"Já existe um produto com o nome '{pizza.Nome}'"); 
+            throw new ArgumentException($"Já existe uma Pizza com o nome '{pizza.Nome}'"); 
         }
         _pizzas.Add(pizza);
         return Task.CompletedTask;
