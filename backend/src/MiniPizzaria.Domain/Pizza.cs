@@ -2,7 +2,7 @@ namespace MiniPizzaria.Domain;
 
 public class Pizza
 {
-    public Guid Id { get; } = Guid.NewGuid();
+    public Guid Id { get; private set; } = Guid.NewGuid();
     private readonly List<Ingrediente> _ingredientes = new();
     public IReadOnlyList<Ingrediente> Ingredientes => _ingredientes;
 
@@ -10,6 +10,8 @@ public class Pizza
 
     public decimal Preco { get; private set; }
 
+    private Pizza(){ Nome = null!;}
+    
     public Pizza(string nome, decimal preco, List<Ingrediente> ingredientes)
     {
         if (string.IsNullOrWhiteSpace(nome)) throw new ArgumentException("O nome é obrigatório");
