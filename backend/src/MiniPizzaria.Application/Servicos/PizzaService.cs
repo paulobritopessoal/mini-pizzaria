@@ -1,4 +1,5 @@
 using MiniPizzaria.Application.Dtos;
+using MiniPizzaria.Application.Excecoes;
 using MiniPizzaria.Application.Repositorios;
 using MiniPizzaria.Domain;
 
@@ -25,14 +26,20 @@ public class PizzaService(IPizzaRepositorio repositorio) : IPizzaService
             .Select(i => new Ingrediente(i.Nome, i.Vegetariano))
             .ToList();
 
-        // 2. Criar a pizza: é AQUI que as regras são verificadas (preço, nome, ingredientes)
+        // 2. Criar a pizza: é AQUI que as regras são verificadas (preço, nome, ingredientes
         var pizza = new Pizza(dto.Nome, dto.Preco, ingredientes);
-
+        if( await repositorio.ExisteComNomeAsync(dto.Nome)) throw new PizzaDuplicadaExcecao(dto.Nome);
         // 3. Guardar
         await repositorio.AdicionarAsync(pizza);
 
         // 4. Devolver a versão "para o cliente"
         return ParaDto(pizza);
+    }
+
+    public async Task<PizzaDto?> ObterPorNomeAsync(string nome)
+    {
+        var pizza = await repositorio.ObterPorNomeAsync(nome);
+        return pizza == null ? null : ParaDto(pizza);
     }
 
     // Converte a entidade do domínio no DTO que sai da API
