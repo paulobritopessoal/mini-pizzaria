@@ -24,4 +24,14 @@ public class PizzaRepositorioEmMemoria : IPizzaRepositorio
         _pizzas.Add(pizza);
         return Task.CompletedTask;
     }
+
+    public Task<Pizza?> ObterPorNomeAsync(string nome)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> ExisteComNomeAsync(string nome)
+    {
+        throw new NotImplementedException();
+    }
 }
