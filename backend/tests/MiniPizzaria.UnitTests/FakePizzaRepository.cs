@@ -18,4 +18,9 @@ public class FakePizzaRepository : IPizzaRepositorio
         Pizzas.Add(pizza);
         return Task.CompletedTask;
     }
+
+    public Task<Pizza?> ObterPorNomeAsync(string nome) => Task.FromResult(Pizzas.FirstOrDefault(p => string.Equals(p.Nome, nome, StringComparison.OrdinalIgnoreCase)));
+
+    public Task<bool> ExisteComNomeAsync(string nome)
+        => Task.FromResult(Pizzas.Any(p => string.Equals(p.Nome, nome, StringComparison.OrdinalIgnoreCase)));
 }
