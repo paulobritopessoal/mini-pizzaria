@@ -13,6 +13,7 @@ public class PizzariaDbContext(DbContextOptions<PizzariaDbContext> options) : Db
         {
             p.HasKey(x => x.Id);
             p.Property(x => x.Nome).HasMaxLength(100).IsRequired();
+            p.HasIndex(p=>p.Nome).IsUnique();
             p.Property(x => x.Preco).HasPrecision(10, 2);
 
             // Os ingredientes vão para uma tabela própria, "presa" à pizza
